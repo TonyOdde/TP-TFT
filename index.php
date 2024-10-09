@@ -9,9 +9,12 @@ $loader->register();
 $loader->addNamespace('\Helpers',__DIR__.'/Helpers');
 $loader->addNamespace('\League\Plates',__DIR__.'/Vendor/plates-3.5.0/src');
 $loader->addNamespace('\Views',__DIR__.'/Views');
-$loader->addNamespace('Controllers', __DIR__.'/Controllers');
+$loader->addNamespace('\Controllers', __DIR__.'/Controllers');
+$loader->addNamespace('\Models', __DIR__.'/Models');
+$loader->addNamespace('\Config', __DIR__.'/Config');
 
-$engine = new \League\Plates\Engine(__DIR__.'/Views');
+
+    $engine = new \League\Plates\Engine(__DIR__.'/Views');
 
 $controller = new \Controllers\MainController($engine);
 $controller->index();

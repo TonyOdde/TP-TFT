@@ -2,6 +2,8 @@
 
 namespace Controllers;
 
+use Models\UnitDAO;
+
 class MainController
 {
 
@@ -11,6 +13,15 @@ class MainController
         $this->templates = $engine;
     }
     public function index() : void {
-        echo $this->templates->render('home', ['tftSetName' => 'Remix Rumble']);
+        $dao = new UnitDAO();
+        $listAll = $dao->getAll();
+        $idMalo = $dao->getById("1");
+        $idInconnu = $dao->getById("2");
+        echo $this->templates->render('home', [
+            'tftSetName' => 'Remix Rumble',
+            'listAll' => $listAll,
+            'idMalo' => $idMalo,
+            'idInconnu' => $idInconnu
+        ]);
     }
 }
