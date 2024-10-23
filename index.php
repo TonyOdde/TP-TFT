@@ -1,7 +1,5 @@
 <?php
 
-use Helpers\Psr4AutoloaderClass;
-
 require_once "Helpers/Psr4AutoloaderClass.php";
 
 $loader = new \Helpers\Psr4AutoloaderClass();
@@ -12,10 +10,13 @@ $loader->addNamespace('\Views',__DIR__.'/Views');
 $loader->addNamespace('\Controllers', __DIR__.'/Controllers');
 $loader->addNamespace('\Models', __DIR__.'/Models');
 $loader->addNamespace('\Config', __DIR__.'/Config');
+$loader->addNamespace('\Routeur', __DIR__.'/Controllers/Routeur');
 
+$routeur = new Controllers\Routeur\Routeur();
 
-    $engine = new \League\Plates\Engine(__DIR__.'/Views');
-
-$controller = new \Controllers\MainController($engine);
-$controller->index();
-
+if(isset($_GET['action'])){
+    $routeur->routing($_GET, null);
+}
+else{
+    $routeur->routing(null, null);
+}

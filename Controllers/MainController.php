@@ -9,19 +9,25 @@ class MainController
 
     private $templates;
 
-    public function __construct($engine){
-        $this->templates = $engine;
+    public function __construct(){
+        $this->templates = new \League\Plates\Engine(__DIR__.'\..\Views');
     }
-    public function index() : void {
+    public function index()
+    {
         $dao = new UnitDAO();
         $listAll = $dao->getAll();
         $idMalo = $dao->getById("1");
-        $idInconnu = $dao->getById("2");
         echo $this->templates->render('home', [
             'tftSetName' => 'Remix Rumble',
             'listAll' => $listAll,
-            'idMalo' => $idMalo,
-            'idInconnu' => $idInconnu
+            'idMalo' => $idMalo
+        ]);
+    }
+
+    public function search()
+    {
+        echo $this->templates->render('search', [
+            'tftSetName' => 'Remix Rumble',
         ]);
     }
 }
