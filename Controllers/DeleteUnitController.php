@@ -3,8 +3,7 @@
 namespace Controllers;
 
 use Models\UnitDAO;
-
-class MainController
+class DeleteUnitController
 {
 
     private $templates;
@@ -16,19 +15,12 @@ class MainController
     {
         $dao = new UnitDAO();
         $listAll = $dao->getAll();
-        $idMalo = $dao->getById("1");
+        $efface = $dao->getById($_GET['id']);
         echo $this->templates->render('home', [
             'tftSetName' => 'Remix Rumble',
-            'listAll' => $listAll,
-            'idMalo' => $idMalo,
-            'message' => ''
+            'message' => $efface->getName() . ' bien effacé',
+            'listAll' => $listAll
         ]);
     }
 
-    public function search()
-    {
-        echo $this->templates->render('search', [
-            'tftSetName' => 'Remix Rumble'
-        ]);
-    }
 }

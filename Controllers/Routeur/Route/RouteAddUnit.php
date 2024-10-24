@@ -17,7 +17,7 @@ class RouteAddUnit extends Route
 
     public function get($params = [])
     {
-        return $this->controller->index();
+        return $this->controller->index($params);
     }
 
     public function post($params = [])
