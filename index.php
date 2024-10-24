@@ -11,6 +11,7 @@ $loader->addNamespace('\Controllers', __DIR__.'/Controllers');
 $loader->addNamespace('\Models', __DIR__.'/Models');
 $loader->addNamespace('\Config', __DIR__.'/Config');
 $loader->addNamespace('\Routeur', __DIR__.'/Controllers/Routeur');
+$loader->addNamespace('\Service', __DIR__.'/Service');
 
 $routeur = new Controllers\Routeur\Routeur();
 

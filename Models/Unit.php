@@ -4,10 +4,11 @@ namespace Models;
 
 class Unit
 {
-    private ?string $id;
+    private int $id;
     private string $name;
     private int $cost;
-    private string $origin;
+    private int $origin;
+    private string $nameOrigin;
     private string $url_img;
 
     public function getId(): ?string
@@ -40,12 +41,12 @@ class Unit
         $this->cost = $cost;
     }
 
-    public function getOrigin(): string
+    public function getOrigin(): int
     {
         return $this->origin;
     }
 
-    public function setOrigin(string $origin): void
+    public function setOrigin(int $origin): void
     {
         $this->origin = $origin;
     }
@@ -58,6 +59,16 @@ class Unit
     public function setUrlImg(string $url_img): void
     {
         $this->url_img = $url_img;
+    }
+
+    public function getNameOrigin(): string
+    {
+        return $this->nameOrigin;
+    }
+
+    public function setNameOrigin(string $nameOrigin): void
+    {
+        $this->nameOrigin = $nameOrigin;
     }
 
 }

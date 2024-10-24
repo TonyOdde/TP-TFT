@@ -2,25 +2,26 @@
 
 namespace Controllers;
 
-use Models\UnitDAO;
+use League\Plates\Engine;
+use Service\IService;
+use Service\ServiceUnit;
 
 class MainController
 {
 
-    private $templates;
+    private Engine $templates;
+    private IService $service;
 
     public function __construct(){
         $this->templates = new \League\Plates\Engine(__DIR__.'\..\Views');
+        $this->service = new ServiceUnit();
     }
-    public function index()
+    public function index() : void
     {
-        $dao = new UnitDAO();
-        $listAll = $dao->getAll();
-        $idMalo = $dao->getById("1");
+        $listAll = $this->service->getAll();
         echo $this->templates->render('home', [
             'tftSetName' => 'Remix Rumble',
             'listAll' => $listAll,
-            'idMalo' => $idMalo,
             'message' => ''
         ]);
     }

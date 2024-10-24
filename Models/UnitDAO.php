@@ -3,8 +3,9 @@
 namespace Models;
 
 use Models\BasePDODAO;
+use mysql_xdevapi\DatabaseObject;
 
-class UnitDAO extends BasePDODAO
+class UnitDAO extends BasePDODAO implements IDAO
 {
     public function getAll() : array
     {
@@ -14,7 +15,7 @@ class UnitDAO extends BasePDODAO
         return $result;
     }
 
-    public function getById (string $idUnit) : ?Unit
+    public function getById (int $idUnit) : Unit|null
     {
         $sql = "SELECT * FROM unit WHERE id = :idUnit";
         $rep = $this->execRequest($sql, ['idUnit' => $idUnit]);

@@ -22,7 +22,7 @@ $this->layout('template', ['title' => 'TP TFT']);
                 "<td>" . $listAll[$i]->getId() . "</td>" .
                 "<td>" . $listAll[$i]->getName() . "</td>" .
                 "<td>" . $listAll[$i]->getCost() . "</td>" .
-                "<td>" . $listAll[$i]->getOrigin() . "</td>" .
+                "<td>" . $listAll[$i]->getNameOrigin() . "</td>" .
                 "<td> <img src=." . $listAll[$i]->getUrlImg() . "></td>" .
                 "<td> <a class='btn-modify' href='index.php?action=edit-unit&id=" . $listAll[$i]->getId() . "'>✏️</a>
                       <a class='btn-modify' href='index.php?action=del-unit&id=" . $listAll[$i]->getId() . "'>🗑️</a></td>" .
