@@ -2,6 +2,8 @@
 
 namespace Controllers\Routeur;
 
+use Exception;
+
 abstract class Route {
     protected $params;
     protected $method;
@@ -14,10 +16,10 @@ abstract class Route {
 
 
     public function action($params = [], $method='GET') {
-        if ($this->method === 'GET') {
-            return $this->get($this->params);
-        } elseif ($this->method === 'POST') {
-            return $this->post($this->params);
+        if ($method === 'GET') {
+            return $this->get($params);
+        } elseif ($method === 'POST') {
+            return $this->post($params);
         }
     }
 

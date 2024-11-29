@@ -23,4 +23,9 @@ class ServiceOrigin implements IService
     {
         return $this->dao->getAll();
     }
+
+    public function create(array $obj): string
+    {
+        return $this->dao->create($obj);
+    }
 }

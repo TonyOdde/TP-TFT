@@ -45,14 +45,12 @@ class Routeur {
 
     public function routing($get, $post) {
 
-        $action = $get[$this->action_key] ?? 'index';
 
+        $action = $get[$this->action_key] ?? 'index';
         if (isset($this->routeList[$action])) {
             $route = $this->routeList[$action];
 
-
             if (!empty($post)) {
-
                 $route->action($post, 'POST');
             } else {
                 $route->action($get, 'GET');

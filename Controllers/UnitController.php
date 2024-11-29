@@ -4,6 +4,7 @@ namespace Controllers;
 
 use League\Plates\Engine;
 use Service\IService;
+use Service\ServiceOrigin;
 use Service\ServiceUnit;
 
 class UnitController
@@ -17,13 +18,26 @@ class UnitController
     }
     public function index($params){
         $unit = null;
+        $serviceOrigin = new ServiceOrigin();
+        $origins = $serviceOrigin->getAll();
         if (!empty($_GET['id'])){
             $unit = $this->service->getOne($_GET['id']);
+            echo $this->templates->render('add-unit', [
+                'tftSetName' => 'Remix Rumble',
+                'unit' => $unit->getName(),
+                'origins' => $origins
+            ]);
         }
+        else{
+            echo $this->templates->render('add-unit', [
+                'tftSetName' => 'Remix Rumble',
+                'unit' => null,
+                'origins' => $origins
+            ]);
+        }
+    }
 
-        echo $this->templates->render('add-unit', [
-            'tftSetName' => 'Remix Rumble',
-            'unit' => $unit->getName()
-        ]);
+    public function addUnit($name){
+        $this->service->create($name);
     }
 }

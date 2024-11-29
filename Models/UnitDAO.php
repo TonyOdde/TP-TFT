@@ -25,4 +25,11 @@ class UnitDAO extends BasePDODAO implements IDAO
         }
         return $result;
     }
+
+    public function create(array $obj): string
+    {
+        $sql = "INSERT INTO unit (name, cost, origin, url_img) VALUES (:name, :cost, :origin, :url_img)";
+        $this->execRequest($sql, ['name' => $obj['name'], 'cost' => $obj['cost'], 'origin' => $obj['origin'], 'url_img' => $obj['url_img']]);
+        return "Unité " . $obj['name'] . " ajouté";
+    }
 }

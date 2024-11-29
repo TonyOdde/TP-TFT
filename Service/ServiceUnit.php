@@ -34,4 +34,9 @@ class ServiceUnit implements IService
         }
         return $listUnit;
     }
+
+    public function create(array $obj): string
+    {
+        return $this->dao->create($obj);
+    }
 }

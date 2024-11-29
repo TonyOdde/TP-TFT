@@ -21,5 +21,8 @@ class RouteAddUnit extends Route
     }
 
     public function post($params = [])
-    { }
+    {
+        $this->controller->addUnit($params);
+        return $this->controller->index($params);
+    }
 }

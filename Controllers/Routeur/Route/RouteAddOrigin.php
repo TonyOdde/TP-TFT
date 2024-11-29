@@ -21,5 +21,8 @@ class RouteAddOrigin extends Route
     }
 
     public function post($params = [])
-    { }
+    {
+        $this->controller->addOrigin($params);
+        return $this->controller->index($params);
+    }
 }

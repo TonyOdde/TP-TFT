@@ -16,8 +16,8 @@ $loader->addNamespace('\Service', __DIR__.'/Service');
 $routeur = new Controllers\Routeur\Routeur();
 
 if(isset($_GET['action'])){
-    $routeur->routing($_GET, null);
+    $routeur->routing($_GET, $_POST);
 }
 else{
-    $routeur->routing(null, null);
+    $routeur->routing(null, $_POST);
 }

@@ -24,4 +24,11 @@ class OriginDAO extends BasePDODAO implements IDAO
         $result = $rep->fetchAll(\PDO::FETCH_CLASS, Origin::class);
         return $result;
     }
+
+    public function create(array $obj): string
+    {
+        $sql = "INSERT INTO origin (name) VALUES (:name)";
+        $this->execRequest($sql, ['name' => $obj['name']]);
+        return "Origine " . $obj['name'] . " ajouté";
+    }
 }
