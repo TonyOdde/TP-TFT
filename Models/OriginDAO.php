@@ -31,4 +31,16 @@ class OriginDAO extends BasePDODAO implements IDAO
         $this->execRequest($sql, ['name' => $obj['name']]);
         return "Origine " . $obj['name'] . " ajouté";
     }
+
+    public function delete(int $id): void
+    {
+        $sql = "DELETE FROM origin WHERE id = :id";
+        $this->execRequest($sql, ['id' => $id]);
+    }
+
+    public function update(array $obj): void
+    {
+        $sql = "UPDATE origin SET name = :name WHERE id = :id";
+        $this->execRequest($sql, ['id' => $obj['id'], 'name' => $obj['name']]);
+    }
 }

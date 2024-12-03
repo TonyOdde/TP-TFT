@@ -39,4 +39,14 @@ class ServiceUnit implements IService
     {
         return $this->dao->create($obj);
     }
+
+    public function delete(int $id): void
+    {
+        $this->dao->delete($id);
+    }
+
+    public function update(array $obj): void
+    {
+        $this->dao->update($obj);
+    }
 }

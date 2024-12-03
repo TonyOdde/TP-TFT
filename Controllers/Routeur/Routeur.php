@@ -3,6 +3,7 @@
 namespace Controllers\Routeur;
 
 use Controllers;
+use Controllers\Routeur\Route\RouteEditUnit;
 use Controllers\Routeur\Route\RouteIndex;
 use Controllers\Routeur\Route\RouteSearch;
 use Controllers\Routeur\Route\RouteAddUnit;
@@ -38,7 +39,7 @@ class Routeur {
         $this->routeList['del-unit'] = new RouteIndex([], $this->ctrlList['del-unit']);
         $this->routeList['search'] = new RouteSearch([], $this->ctrlList['main']);
         $this->routeList['add-unit'] = new RouteAddUnit([], $this->ctrlList['add-unit']);
-        $this->routeList['edit-unit'] = new RouteAddUnit([$id], $this->ctrlList['edit-unit']);
+        $this->routeList['edit-unit'] = new RouteEditUnit([$id], $this->ctrlList['edit-unit']);
         $this->routeList['add-unit-origin'] = new RouteAddOrigin([], $this->ctrlList['add-origin']);
     }
 

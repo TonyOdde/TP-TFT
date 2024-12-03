@@ -4,7 +4,7 @@ $this->layout('template', ['title' => 'TP TFT']);
 <h1>TFT - Set <?= $this->e($tftSetName) ?></h1>
 <h1>Add Unit</h1>
 
-<form action="index.php?action=add-unit" method="post">
+<form action="index.php?action=edit-unit&id=<?=$id?>" method="post">
     <label for="name">
         Nom :
         <?php if ($this->e($unit) !== ""): ?>

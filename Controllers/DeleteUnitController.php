@@ -17,11 +17,13 @@ class DeleteUnitController
     public function index()
     {
         $service = new ServiceUnit();
-        $listAll = $service->getAll();
         $efface = $service->getOne($_GET['id']);
+        $nom = $efface->getName();
+        $service->delete($efface->getId());
+        $listAll = $service->getAll();
         echo $this->templates->render('home', [
             'tftSetName' => 'Remix Rumble',
-            'message' => $efface->getName() . ' bien effacé',
+            'message' =>  $nom . ' bien effacé',
             'listAll' => $listAll
         ]);
     }

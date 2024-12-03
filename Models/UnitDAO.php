@@ -32,4 +32,16 @@ class UnitDAO extends BasePDODAO implements IDAO
         $this->execRequest($sql, ['name' => $obj['name'], 'cost' => $obj['cost'], 'origin' => $obj['origin'], 'url_img' => $obj['url_img']]);
         return "Unité " . $obj['name'] . " ajouté";
     }
+
+    public function delete(int $id): void
+    {
+        $sql = "DELETE FROM unit WHERE id = :id";
+        $this->execRequest($sql, ['id' => $id]);
+    }
+
+    public function update(array $obj): void
+    {
+        $sql = "UPDATE unit SET name = :name, cost = :cost, url_img = :url, origin = :origin WHERE id = :id";
+        $this->execRequest($sql, ['id' => $obj['id'], 'name' => $obj['name'], 'cost' => $obj['cost'], 'url' => $obj['url_img'], 'origin' => $obj['origin']]);
+    }
 }
